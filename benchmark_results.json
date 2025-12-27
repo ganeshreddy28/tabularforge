@@ -1,0 +1,41 @@
+{
+  "copula": {
+    "quality": {
+      "statistical_similarity": 0.975093754369245,
+      "column_correlations": 0.9723137971138722,
+      "distribution_match": 0.9785,
+      "ml_utility": 0.75
+    },
+    "privacy": {
+      "membership_inference_risk": 0.5133333333333333,
+      "nearest_neighbor_distance": 0.5857141486444379,
+      "min_neighbor_distance": 0.04068232697068232
+    }
+  },
+  "ctgan": {
+    "quality": {
+      "statistical_similarity": 0.8794362817839388,
+      "column_correlations": 0.9409854571591353,
+      "distribution_match": 0.8344999999999999,
+      "ml_utility": 0.6713609381259332
+    },
+    "privacy": {
+      "membership_inference_risk": 0.7533333333333333,
+      "nearest_neighbor_distance": 0.5707103410596465,
+      "min_neighbor_distance": 0.05395836696143243
+    }
+  },
+  "tvae": {
+    "quality": {
+      "statistical_similarity": 0.8191409952997184,
+      "column_correlations": 0.9731953301722429,
+      "distribution_match": 0.7241666666666666,
+      "ml_utility": 0.6455351615135293
+    },
+    "privacy": {
+      "membership_inference_risk": 0.9,
+      "nearest_neighbor_distance": 0.44818616013240264,
+      "min_neighbor_distance": 0.013420922500114901
+    }
+  }
+}
