@@ -55,7 +55,7 @@ Synthetic data solves this by generating realistic, statistically similar data t
 pip install tabularforge
 
 # Or install from source
-git clone https://github.com/yourusername/tabularforge.git
+git clone https://github.com/ganeshreddy28/tabularforge.git
 cd tabularforge
 pip install -e .
 ```
@@ -273,7 +273,7 @@ tabularforge/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/tabularforge.git
+git clone https://github.com/ganeshreddy28/tabularforge.git
 cd tabularforge
 
 # Create virtual environment
