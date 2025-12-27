@@ -1,6 +1,6 @@
 """
 Generators Module
-=================
+-----------------
 
 This module contains all synthetic data generators available in TabularForge.
 

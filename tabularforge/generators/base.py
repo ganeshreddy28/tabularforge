@@ -1,6 +1,6 @@
 """
 Base Generator Module
-=====================
+---------------------
 
 This module defines the abstract base class for all synthetic data generators.
 All generator implementations (Copula, CTGAN, TVAE, etc.) must inherit from

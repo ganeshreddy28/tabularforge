@@ -24,12 +24,12 @@ requires-python = ">=3.8"
 
 # Author information - Update with your details
 authors = [
-    {name = "Sai Ganesh Kolan", email = "your.email@example.com"}
+    {name = "Sai Ganesh Kolan", email = "aiganesh1299@gmail.com"}
 ]
 
 # Maintainer information
 maintainers = [
-    {name = "Sai Ganesh Kolan", email = "your.email@example.com"}
+    {name = "Sai Ganesh Kolan", email = "aiganesh1299@gmail.com"}
 ]
 
 # Keywords help users find your package on PyPI
@@ -126,11 +126,11 @@ all = [
 # Links displayed on PyPI page
 # ============================================================================
 [project.urls]
-Homepage = "https://github.com/yourusername/tabularforge"
+Homepage = "https://github.com/ganeshreddy28/tabularforge"
 Documentation = "https://tabularforge.readthedocs.io"
-Repository = "https://github.com/yourusername/tabularforge"
-Issues = "https://github.com/yourusername/tabularforge/issues"
-Changelog = "https://github.com/yourusername/tabularforge/blob/main/CHANGELOG.md"
+Repository = "https://github.com/ganeshreddy28/tabularforge"
+Issues = "https://github.com/ganeshreddy28/tabularforge"
+Changelog = "https://github.com/ganeshreddy28/tabularforge/blob/main/CHANGELOG.md"
 
 # ============================================================================
 # SETUPTOOLS CONFIGURATION
