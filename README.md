@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/tabularforge-sgk/0.1.0/"><img src="https://img.shields.io/pypi/v/tabularforge.svg" alt="PyPI version"></a>
-  <a href="https://pypi.org/project/tabularforge-sgk/0.1.0/"><img src="https://img.shields.io/pypi/pyversions/tabularforge.svg" alt="Python versions"></a>
+  <a href="https://pypi.org/project/tabularforge-sgk/0.1.1/"><img src="https://img.shields.io/pypi/v/tabularforge.svg" alt="PyPI version"></a>
+  <a href="https://pypi.org/project/tabularforge-sgk/0.1.1/"><img src="https://img.shields.io/pypi/pyversions/tabularforge.svg" alt="Python versions"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
   <a href="https://github.com/ganeshreddy28/tabularforge/actions"><img src="https://github.com/ganeshreddy28/tabularforge/workflows/tests/badge.svg" alt="Tests"></a>
 </p>

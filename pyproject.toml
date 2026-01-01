@@ -16,7 +16,7 @@ build-backend = "setuptools.build_meta"
 # displayed on PyPI and used by pip for installation.
 # ============================================================================
 name = "tabularforge-sgk"
-version = "0.1.0"
+version = "0.1.1"
 description = "Privacy-Preserving Synthetic Tabular Data Generation"
 readme = "README.md"
 license = {text = "MIT"}
