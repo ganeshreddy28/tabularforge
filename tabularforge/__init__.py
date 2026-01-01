@@ -1,6 +1,5 @@
 """
 TabularForge: Privacy-Preserving Synthetic Tabular Data Generation
-====================================================================
 
 TabularForge is a unified, production-ready Python library for generating
 high-quality synthetic tabular data with built-in privacy guarantees.
@@ -31,25 +30,19 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # VERSION INFORMATION
-# =============================================================================
 # We follow Semantic Versioning (SemVer): MAJOR.MINOR.PATCH
 # - MAJOR: Incompatible API changes
 # - MINOR: New functionality (backwards compatible)
 # - PATCH: Bug fixes (backwards compatible)
-# =============================================================================
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Sai Ganesh Kolan"
-__email__ = "your.email@example.com"
+__email__ = "aiganesh1299@gmail.com"
 __license__ = "MIT"
 
-# =============================================================================
 # PUBLIC API IMPORTS
-# =============================================================================
 # These are the main classes and functions users should use.
 # We import them here so users can do: from tabularforge import TabularForge
-# =============================================================================
 
 # Main class - the primary interface for the library
 from tabularforge.forge import TabularForge
@@ -73,13 +66,11 @@ from tabularforge.metrics.statistical import StatisticalMetrics
 from tabularforge.metrics.utility import UtilityMetrics
 from tabularforge.metrics.privacy import PrivacyMetrics
 
-# =============================================================================
+
 # __all__ DEFINITION
-# =============================================================================
 # This list defines what gets exported when someone does:
 # from tabularforge import *
 # We explicitly list everything to make the public API clear.
-# =============================================================================
 __all__ = [
     # Version info
     "__version__",
@@ -110,12 +101,10 @@ __all__ = [
     "PrivacyMetrics",
 ]
 
-# =============================================================================
-# PACKAGE INITIALIZATION LOGGING
-# =============================================================================
+# PACKAGE INITIALISATION LOGGING
 # Optional: Log package import for debugging purposes
 # This can be helpful during development but should be quiet in production
-# =============================================================================
+
 import logging
 
 # Create a logger for the package

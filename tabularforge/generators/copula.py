@@ -1,6 +1,5 @@
 """
 Gaussian Copula Generator
-=========================
 
 This module implements synthetic data generation using Gaussian Copulas.
 Copulas are mathematical functions that describe the dependence structure
@@ -26,9 +25,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, List, Optional
 
 import numpy as np
@@ -77,8 +74,7 @@ class GaussianCopulaGenerator(BaseGenerator):
         # Call parent class constructor
         super().__init__(random_state=random_state)
         
-        # Initialize attributes that will be set during fitting
-        # =====================================================================
+        # Initialise attributes that will be set during fitting
         
         # Correlation matrix of the Gaussian copula
         # Shape: (n_columns, n_columns)
@@ -115,20 +111,15 @@ class GaussianCopulaGenerator(BaseGenerator):
             encoder: 
                 Data encoder with column type information
         """
-        # =====================================================================
         # STEP 1: STORE BASIC INFO
-        # =====================================================================
         
         # Store column names and count
         self.column_names = list(data.columns)
         self._n_columns = len(self.column_names)
         
-        # =====================================================================
         # STEP 2: LEARN MARGINAL DISTRIBUTIONS
-        # =====================================================================
         # For each column, we learn its empirical distribution
         # This allows us to transform the column to uniform later
-        # =====================================================================
         
         for col in self.column_names:
             # Get column values
@@ -149,11 +140,8 @@ class GaussianCopulaGenerator(BaseGenerator):
                 "n_samples": len(col_data)
             }
         
-        # =====================================================================
         # STEP 3: TRANSFORM TO UNIFORM SPACE (USING ECDF)
-        # =====================================================================
         # Transform each column to uniform [0, 1] using empirical CDF
-        # =====================================================================
         
         uniform_data = np.zeros_like(data.values, dtype=float)
         
@@ -165,11 +153,8 @@ class GaussianCopulaGenerator(BaseGenerator):
             ranks = rankdata(col_data, method='average')
             uniform_data[:, i] = ranks / (len(col_data) + 1)
         
-        # =====================================================================
         # STEP 4: TRANSFORM TO NORMAL SPACE
-        # =====================================================================
         # Apply inverse normal CDF (percent point function) to get standard normal
-        # =====================================================================
         
         # Clip to avoid infinity at 0 and 1
         uniform_data = np.clip(uniform_data, 1e-6, 1 - 1e-6)
@@ -177,11 +162,9 @@ class GaussianCopulaGenerator(BaseGenerator):
         # Transform uniform to normal
         normal_data = norm.ppf(uniform_data)
         
-        # =====================================================================
+        
         # STEP 5: ESTIMATE CORRELATION MATRIX
-        # =====================================================================
         # Fit multivariate Gaussian by estimating the correlation matrix
-        # =====================================================================
         
         # Calculate correlation matrix
         # We use np.corrcoef which returns correlation (not covariance)
@@ -219,11 +202,8 @@ class GaussianCopulaGenerator(BaseGenerator):
             pd.DataFrame: 
                 DataFrame with n_samples rows of synthetic data
         """
-        # =====================================================================
         # STEP 1: SAMPLE FROM MULTIVARIATE GAUSSIAN
-        # =====================================================================
         # Generate samples from multivariate normal with learned correlations
-        # =====================================================================
         
         # Set random state if provided
         if self.random_state is not None:
@@ -237,19 +217,13 @@ class GaussianCopulaGenerator(BaseGenerator):
             size=n_samples
         )
         
-        # =====================================================================
         # STEP 2: TRANSFORM TO UNIFORM SPACE
-        # =====================================================================
         # Apply normal CDF to get uniform [0, 1] values
-        # =====================================================================
         
         uniform_samples = norm.cdf(normal_samples)
         
-        # =====================================================================
         # STEP 3: TRANSFORM TO ORIGINAL SPACE
-        # =====================================================================
         # Use inverse empirical CDF to get values in original distribution
-        # =====================================================================
         
         synthetic_data = np.zeros_like(uniform_samples)
         
@@ -273,9 +247,7 @@ class GaussianCopulaGenerator(BaseGenerator):
             upper_vals = marginal["values"][upper_idx]
             synthetic_data[:, i] = lower_vals + frac * (upper_vals - lower_vals)
         
-        # =====================================================================
         # STEP 4: CREATE DATAFRAME
-        # =====================================================================
         
         synthetic_df = pd.DataFrame(
             synthetic_data,

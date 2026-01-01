@@ -1,6 +1,5 @@
 """
 Metrics Module
-==============
 
 This module contains metrics for evaluating synthetic data quality and privacy.
 

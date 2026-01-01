@@ -1,6 +1,5 @@
 """
 Privacy Attack Simulation Module
-================================
 
 This module provides tools for simulating privacy attacks against
 synthetic data. This helps evaluate how well the synthetic data
@@ -17,9 +16,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, Optional
 
 import numpy as np

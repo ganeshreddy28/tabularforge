@@ -1,6 +1,5 @@
 """
 TabularForge Main Class
-=======================
 
 This module contains the TabularForge class, which is the primary interface
 for generating synthetic tabular data. It provides a simple, unified API
@@ -18,9 +17,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 # Standard library imports (built into Python)
 import logging
 from typing import Dict, List, Optional, Union, Any
@@ -41,22 +38,16 @@ from tabularforge.metrics.statistical import StatisticalMetrics
 from tabularforge.metrics.utility import UtilityMetrics
 from tabularforge.metrics.privacy import PrivacyMetrics
 
-# =============================================================================
 # LOGGER SETUP
-# =============================================================================
 # Create a logger specific to this module
 # This allows users to control logging verbosity for this module specifically
-# =============================================================================
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # GENERATOR REGISTRY
-# =============================================================================
 # This dictionary maps generator names (strings) to their class implementations.
 # This allows users to specify generators by name: TabularForge(data, generator='ctgan')
 # Adding a new generator is as simple as adding an entry here.
-# =============================================================================
 AVAILABLE_GENERATORS: Dict[str, type] = {
     "copula": GaussianCopulaGenerator,      # Fast, good for simple distributions
     "gaussian_copula": GaussianCopulaGenerator,  # Alias for copula
@@ -180,11 +171,8 @@ class TabularForge:
             ...     random_state=42
             ... )
         """
-        # =====================================================================
         # STEP 1: INPUT VALIDATION
-        # =====================================================================
         # We validate inputs early to fail fast with clear error messages
-        # =====================================================================
         
         # Check that data is a pandas DataFrame
         if not isinstance(data, pd.DataFrame):
@@ -208,11 +196,8 @@ class TabularForge:
                 f"Available generators: {available}"
             )
         
-        # =====================================================================
         # STEP 2: STORE CONFIGURATION
-        # =====================================================================
         # We store all configuration for later use and reproducibility
-        # =====================================================================
         
         # Store the original data (make a copy to avoid modifying user's data)
         self.data: pd.DataFrame = data.copy()
@@ -232,11 +217,8 @@ class TabularForge:
             logger.info(f"Initializing TabularForge with {len(data)} rows, {len(data.columns)} columns")
             logger.info(f"Generator: {generator}")
         
-        # =====================================================================
         # STEP 3: COLUMN TYPE DETECTION
-        # =====================================================================
         # Detect or validate column types for proper preprocessing
-        # =====================================================================
         
         # Initialize the encoder which handles column type detection
         self.encoder: DataEncoder = DataEncoder(
@@ -252,11 +234,8 @@ class TabularForge:
             logger.info(f"Detected {len(self.encoder.categorical_columns)} categorical columns")
             logger.info(f"Detected {len(self.encoder.numerical_columns)} numerical columns")
         
-        # =====================================================================
         # STEP 4: DATA TRANSFORMATION
-        # =====================================================================
         # Transform data into format suitable for the generator
-        # =====================================================================
         
         # Initialize the transformer
         self.transformer: DataTransformer = DataTransformer()
@@ -267,11 +246,8 @@ class TabularForge:
             self.encoder
         )
         
-        # =====================================================================
         # STEP 5: PRIVACY SETUP (OPTIONAL)
-        # =====================================================================
         # Set up differential privacy if epsilon is provided
-        # =====================================================================
         
         self.privacy: Optional[DifferentialPrivacy] = None
         if privacy_epsilon is not None:
@@ -279,11 +255,8 @@ class TabularForge:
                 logger.info(f"Setting up differential privacy with epsilon={privacy_epsilon}")
             self.privacy = DifferentialPrivacy(epsilon=privacy_epsilon)
         
-        # =====================================================================
         # STEP 6: GENERATOR INITIALIZATION AND FITTING
-        # =====================================================================
         # Create and fit the selected generator
-        # =====================================================================
         
         # Get the generator class from the registry
         generator_class = AVAILABLE_GENERATORS[self._generator_name]
@@ -302,11 +275,8 @@ class TabularForge:
         if verbose:
             logger.info("TabularForge initialized successfully!")
         
-        # =====================================================================
         # STEP 7: STORE METADATA
-        # =====================================================================
         # Store information about the fitted model for later use
-        # =====================================================================
         
         self._is_fitted: bool = True
         self._n_original_samples: int = len(data)
@@ -356,9 +326,7 @@ class TabularForge:
             ...     conditions={'gender': 'female'}
             ... )
         """
-        # =====================================================================
         # STEP 1: VALIDATION
-        # =====================================================================
         
         # Check that the generator has been fitted
         if not self._is_fitted:
@@ -373,9 +341,7 @@ class TabularForge:
                 f"n_samples must be a positive integer, got {n_samples}"
             )
         
-        # =====================================================================
         # STEP 2: GENERATE RAW SYNTHETIC DATA
-        # =====================================================================
         
         if self._verbose:
             logger.info(f"Generating {n_samples} synthetic samples...")
@@ -383,18 +349,14 @@ class TabularForge:
         # Generate samples using the fitted generator
         synthetic_transformed = self.generator.sample(n_samples, conditions)
         
-        # =====================================================================
         # STEP 3: APPLY DIFFERENTIAL PRIVACY (OPTIONAL)
-        # =====================================================================
         
         if self.privacy is not None:
             if self._verbose:
                 logger.info("Applying differential privacy...")
             synthetic_transformed = self.privacy.add_noise(synthetic_transformed)
         
-        # =====================================================================
         # STEP 4: INVERSE TRANSFORM TO ORIGINAL SPACE
-        # =====================================================================
         
         # Convert back from transformed space to original data format
         synthetic_data = self.transformer.inverse_transform(
@@ -402,9 +364,7 @@ class TabularForge:
             self.encoder
         )
         
-        # =====================================================================
         # STEP 5: POST-PROCESSING
-        # =====================================================================
         
         # Ensure column order matches original data
         synthetic_data = synthetic_data[self._column_names]

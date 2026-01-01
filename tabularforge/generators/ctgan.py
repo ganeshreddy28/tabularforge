@@ -1,6 +1,5 @@
 """
 CTGAN Generator (Conditional Tabular GAN)
-==========================================
 
 This module implements CTGAN (Conditional Tabular GAN) for synthetic data
 generation. CTGAN is specifically designed for tabular data and handles
@@ -22,9 +21,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
@@ -37,9 +34,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from tabularforge.generators.base import BaseGenerator
 
 
-# =============================================================================
 # NEURAL NETWORK COMPONENTS
-# =============================================================================
 
 class Residual(nn.Module):
     """
@@ -253,9 +248,7 @@ class Discriminator(nn.Module):
         return self.model(x)
 
 
-# =============================================================================
 # CTGAN GENERATOR CLASS
-# =============================================================================
 
 class CTGANGenerator(BaseGenerator):
     """
@@ -340,9 +333,7 @@ class CTGANGenerator(BaseGenerator):
             data: Training data (transformed)
             encoder: Data encoder with column info
         """
-        # =====================================================================
         # STEP 1: PREPARE DATA
-        # =====================================================================
         
         # Convert to numpy array
         data_array = data.values.astype(np.float32)
@@ -361,9 +352,7 @@ class CTGANGenerator(BaseGenerator):
             drop_last=True
         )
         
-        # =====================================================================
-        # STEP 2: INITIALIZE NETWORKS
-        # =====================================================================
+        # STEP 2: INITIALISE NETWORKS
         
         # Initialize generator
         self.generator = Generator(
@@ -380,9 +369,7 @@ class CTGANGenerator(BaseGenerator):
             n_layers=self.n_layers
         ).to(self.device)
         
-        # =====================================================================
         # STEP 3: SETUP TRAINING
-        # =====================================================================
         
         # Optimizers (Adam with beta1=0.5 as commonly used in GANs)
         g_optimizer = optim.Adam(
@@ -399,9 +386,8 @@ class CTGANGenerator(BaseGenerator):
         # Binary cross entropy loss
         criterion = nn.BCELoss()
         
-        # =====================================================================
+        
         # STEP 4: TRAINING LOOP
-        # =====================================================================
         
         for epoch in range(self.epochs):
             for batch_idx, (real_data,) in enumerate(dataloader):
@@ -411,9 +397,7 @@ class CTGANGenerator(BaseGenerator):
                 real_labels = torch.ones(batch_size, 1).to(self.device)
                 fake_labels = torch.zeros(batch_size, 1).to(self.device)
                 
-                # ---------------------------------------------------------
                 # Train Discriminator
-                # ---------------------------------------------------------
                 for _ in range(self.discriminator_steps):
                     d_optimizer.zero_grad()
                     
@@ -434,9 +418,7 @@ class CTGANGenerator(BaseGenerator):
                     d_loss.backward()
                     d_optimizer.step()
                 
-                # ---------------------------------------------------------
                 # Train Generator
-                # ---------------------------------------------------------
                 g_optimizer.zero_grad()
                 
                 # Generate fake data

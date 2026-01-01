@@ -1,6 +1,5 @@
 """
 Data Encoder Module
-===================
 
 This module provides the DataEncoder class which handles automatic detection
 and encoding of different column types in tabular data.
@@ -16,9 +15,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
@@ -116,9 +113,7 @@ class DataEncoder:
         Raises:
             ValueError: If data is empty
         """
-        # =====================================================================
         # VALIDATION
-        # =====================================================================
         
         if data.empty:
             raise ValueError("Cannot fit encoder on empty DataFrame")
@@ -126,15 +121,11 @@ class DataEncoder:
         # Store column order
         self._column_order = list(data.columns)
         
-        # =====================================================================
         # STEP 1: DETECT COLUMN TYPES
-        # =====================================================================
         
         self._detect_column_types(data)
         
-        # =====================================================================
         # STEP 2: FIT CATEGORICAL ENCODERS
-        # =====================================================================
         
         for col in self.categorical_columns:
             # Create and fit label encoder
@@ -146,9 +137,7 @@ class DataEncoder:
             
             self._label_encoders[col] = encoder
         
-        # =====================================================================
         # STEP 3: FIT NUMERICAL SCALERS
-        # =====================================================================
         
         for col in self.numerical_columns:
             # Create and fit scaler

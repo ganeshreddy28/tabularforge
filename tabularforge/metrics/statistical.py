@@ -1,6 +1,5 @@
 """
 Statistical Metrics Module
-==========================
 
 This module provides metrics for evaluating how well synthetic data
 matches the statistical properties of real data.
@@ -14,7 +13,6 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
 # =============================================================================
 from typing import Any, Dict

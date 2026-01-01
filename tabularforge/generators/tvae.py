@@ -1,6 +1,5 @@
 """
 TVAE Generator (Tabular Variational Autoencoder)
-=================================================
 
 This module implements TVAE (Tabular Variational Autoencoder) for synthetic
 data generation. VAEs learn a compressed latent representation of the data
@@ -25,9 +24,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
@@ -40,9 +37,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from tabularforge.generators.base import BaseGenerator
 
 
-# =============================================================================
 # NEURAL NETWORK COMPONENTS
-# =============================================================================
 
 class Encoder(nn.Module):
     """

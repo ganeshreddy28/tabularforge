@@ -1,6 +1,5 @@
 """
 Privacy Metrics Module
-======================
 
 This module provides metrics for evaluating privacy protection
 of synthetic data.
@@ -14,9 +13,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, Optional
 
 import numpy as np

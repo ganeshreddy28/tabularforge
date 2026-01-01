@@ -15,9 +15,8 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
+
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional, Union
 
@@ -109,20 +108,14 @@ class BaseGenerator(ABC):
         Raises:
             ValueError: If data is empty or has invalid format.
         """
-        # =====================================================================
-        # VALIDATION
-        # =====================================================================
-        
+        # VALIDATION        
         # Check that data is not empty
         if isinstance(data, pd.DataFrame) and data.empty:
             raise ValueError("Cannot fit on empty DataFrame")
         if isinstance(data, np.ndarray) and data.size == 0:
             raise ValueError("Cannot fit on empty array")
         
-        # =====================================================================
-        # STORE ENCODER AND COLUMN INFO
-        # =====================================================================
-        
+        # STORE ENCODER AND COLUMN INFO        
         # Store encoder for use during sampling
         self._encoder = encoder
         
@@ -136,9 +129,7 @@ class BaseGenerator(ABC):
                 for col in data.columns
             }
         
-        # =====================================================================
         # DELEGATE TO SUBCLASS IMPLEMENTATION
-        # =====================================================================
         
         # Call the subclass-specific fitting logic
         self._fit(data, encoder)
@@ -193,9 +184,7 @@ class BaseGenerator(ABC):
             RuntimeError: If generator has not been fitted.
             ValueError: If n_samples is not positive.
         """
-        # =====================================================================
         # VALIDATION
-        # =====================================================================
         
         # Check that generator has been fitted
         if not self.is_fitted:
@@ -207,9 +196,7 @@ class BaseGenerator(ABC):
         if n_samples <= 0:
             raise ValueError(f"n_samples must be positive, got {n_samples}")
         
-        # =====================================================================
         # DELEGATE TO SUBCLASS IMPLEMENTATION
-        # =====================================================================
         
         # Call the subclass-specific sampling logic
         synthetic_data = self._sample(n_samples, conditions)

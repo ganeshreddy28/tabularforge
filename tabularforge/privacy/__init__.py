@@ -1,6 +1,5 @@
 """
 Privacy Module
-==============
 
 This module contains privacy-related functionality for TabularForge.
 

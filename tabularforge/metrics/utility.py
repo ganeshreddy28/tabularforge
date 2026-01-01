@@ -1,6 +1,5 @@
 """
 Utility Metrics Module
-======================
 
 This module provides metrics for evaluating the ML utility of synthetic data.
 
@@ -12,9 +11,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Dict, Optional
 
 import numpy as np

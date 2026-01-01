@@ -1,6 +1,5 @@
 """
 Differential Privacy Module
-===========================
 
 This module implements differential privacy mechanisms for synthetic data.
 
@@ -18,9 +17,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Optional
 
 import numpy as np

@@ -1,6 +1,5 @@
 """
 TabularForge Examples
----------------------
 
 This file contains examples demonstrating how to use TabularForge
 for synthetic tabular data generation.

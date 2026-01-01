@@ -1,6 +1,5 @@
 """
 Data Transformer Module
-=======================
 
 This module provides the DataTransformer class which orchestrates
 the full data transformation pipeline for synthetic data generation.
@@ -14,9 +13,7 @@ Author: Sai Ganesh Kolan
 License: MIT
 """
 
-# =============================================================================
 # IMPORTS
-# =============================================================================
 from typing import Any, Optional
 
 import numpy as np

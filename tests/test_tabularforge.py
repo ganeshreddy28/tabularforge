@@ -1,6 +1,5 @@
 """
 TabularForge Test Suite
-=======================
 
 This test module contains comprehensive tests for TabularForge.
 
@@ -25,9 +24,7 @@ from tabularforge.privacy import DifferentialPrivacy
 from tabularforge.metrics import StatisticalMetrics
 
 
-# =============================================================================
 # FIXTURES - Reusable test data
-# =============================================================================
 
 @pytest.fixture
 def sample_data():
@@ -64,10 +61,7 @@ def simple_numerical_data():
         "x3": np.random.uniform(0, 10, 200),
     })
 
-
-# =============================================================================
 # TABULARFORGE MAIN CLASS TESTS
-# =============================================================================
 
 class TestTabularForge:
     """Tests for the main TabularForge class."""
@@ -162,9 +156,7 @@ class TestTabularForge:
         pd.testing.assert_frame_equal(synthetic1, synthetic2)
 
 
-# =============================================================================
 # DATA ENCODER TESTS
-# =============================================================================
 
 class TestDataEncoder:
     """Tests for the DataEncoder class."""
@@ -209,9 +201,7 @@ class TestDataEncoder:
         assert set(recovered.columns) == set(sample_data.columns)
 
 
-# =============================================================================
 # GENERATOR TESTS
-# =============================================================================
 
 class TestGaussianCopulaGenerator:
     """Tests for Gaussian Copula generator."""
@@ -268,9 +258,7 @@ class TestTVAEGenerator:
         assert len(synthetic) == 50
 
 
-# =============================================================================
 # DIFFERENTIAL PRIVACY TESTS
-# =============================================================================
 
 class TestDifferentialPrivacy:
     """Tests for differential privacy mechanism."""
@@ -297,9 +285,7 @@ class TestDifferentialPrivacy:
         assert list(noisy_data.columns) == list(simple_numerical_data.columns)
 
 
-# =============================================================================
 # STATISTICAL METRICS TESTS
-# =============================================================================
 
 class TestStatisticalMetrics:
     """Tests for statistical metrics."""
@@ -315,9 +301,7 @@ class TestStatisticalMetrics:
         assert scores["overall"] > 0.9
 
 
-# =============================================================================
 # INTEGRATION TESTS
-# =============================================================================
 
 class TestIntegration:
     """End-to-end integration tests."""
