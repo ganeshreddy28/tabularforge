@@ -51,7 +51,11 @@ Synthetic data solves this by generating realistic, statistically similar data t
 
 ```bash
 # Install from PyPI
-pip install tabularforge
+pip install tabularforge-sgk
+
+or 
+
+pip install git+https://github.com/ganeshreddy28/tabularforge.git
 
 # Or install from source
 git clone https://github.com/ganeshreddy28/tabularforge.git
